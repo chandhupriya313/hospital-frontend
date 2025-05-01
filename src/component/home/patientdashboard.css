@@ -1,0 +1,55 @@
+.homepage-container {
+  text-align: center;
+  padding: 40px;
+  background-color: azure;
+  
+  background-image: url('C:\Users\chand\OneDrive\Desktop\reactbasics\hospital-frontend\src\component\image\hopegiving1.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+
+.homepage-heading {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
+
+.homepage-button-container {
+  
+  
+  gap: 15px;
+  align-items: center;
+}
+
+.homepage-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 300px;
+  transition: background-color 0.3s ease;
+}
+
+.homepage-button:hover {
+  background-color: #0056b3;
+}
+
+.logout-button {
+  background-color: #dc3545;
+}
+
+.appointment-options {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}

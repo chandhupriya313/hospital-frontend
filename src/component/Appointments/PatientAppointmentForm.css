@@ -1,0 +1,62 @@
+/* PatientAppointmentForm.css */
+
+.appointment-form-container {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  .appointment-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .appointment-form label {
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .appointment-form input,
+  .appointment-form select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .appointment-form button {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .appointment-form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .message {
+    text-align: center;
+    margin-bottom: 15px;
+    color: green;
+    font-weight: bold;
+  }
+  

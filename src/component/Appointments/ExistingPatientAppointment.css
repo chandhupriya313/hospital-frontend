@@ -1,0 +1,40 @@
+.existing-appointment-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+  }
+  
+  input {
+    display: block;
+    margin: 10px 0;
+    padding: 8px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  button {
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .record-display {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .appointment-options {
+    margin-top: 20px;
+  }
+  
+  .status-message {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  

@@ -1,0 +1,38 @@
+.appointment-form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: #f9f9f9;
+  }
+  
+  .appointment-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .appointment-form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .book-btn {
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .book-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  .appointment-message {
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  

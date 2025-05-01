@@ -1,0 +1,102 @@
+/* AppointmentListPage.css */
+
+.appointment-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333333;
+}
+
+.delete-section,
+.update-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.delete-section input,
+.update-section input {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  flex: 1 1 200px;
+}
+
+.delete-btn,
+.update-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover,
+.update-btn:hover {
+  background-color: #0056b3;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.appointment-table th,
+.appointment-table td {
+  border: 1px solid #121111;
+  padding: 12px;
+  text-align: center;
+}
+
+.appointment-table th {
+  background-color: #4f6173;
+  color: #333333;
+}
+
+.appointment-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.appointment-table tr:hover {
+  background-color: #e9ecef;
+}
+
+.appointment-table button {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: background-color 0.3s ease;
+}
+
+.appointment-table button:first-child {
+  background-color: #28a745;
+}
+
+.appointment-table button:first-child:hover {
+  background-color: #218838;
+}
+
+.appointment-table button:last-child {
+  background-color: #dc3545;
+}
+
+.appointment-table button:last-child:hover {
+  background-color: #c82333;
+}
