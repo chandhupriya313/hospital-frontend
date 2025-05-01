@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { IoMdArrowRoundBack } from "react-icons/io";
 import './DoctorDashboard.css';
 
 const DoctorListPage = () => {
   const [doctors, setDoctors] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchDoctors();
@@ -20,15 +23,20 @@ const DoctorListPage = () => {
 
   const handleDeleteDoctor = async (id) => {
     try {
-      await axios.delete(`http://localhost:8080/doctor/delete/${id}`); // Adjust the endpoint as per your backend
+      await axios.delete(`http://localhost:8080/doctor/delete/${id}`);
       fetchDoctors(); // Refresh the list after deletion
     } catch (error) {
       console.error('Error deleting doctor:', error);
     }
   };
 
+  const handleBack = () => {
+    navigate('/AdminHome'); // Adjust this path if your admin home route is different
+  };
+
   return (
     <div className="doctor-list-page">
+      <button className="back-button" onClick={handleBack}><IoMdArrowRoundBack /></button>
       <h2>Available Doctors</h2>
       {doctors.length === 0 ? (
         <p>No doctors available.</p>
@@ -36,13 +44,13 @@ const DoctorListPage = () => {
         <table className="doctor-table">
           <thead>
             <tr>
-              <th>id</th>
+              <th>ID</th>
               <th>Name</th>
               <th>Profession</th>
               <th>Specialization</th>
               <th>Working Days</th>
               <th>Working Hours</th>
-              <th>Actions</th> {/* Add Actions column */}
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>

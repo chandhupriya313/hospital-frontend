@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { IoMdArrowRoundBack } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom'; // ✅ Import this
 import './AppointmentListPage.css';
 
 const AppointmentListPage = () => {
@@ -8,6 +10,7 @@ const AppointmentListPage = () => {
   const [updateId, setUpdateId] = useState('');
   const [newDate, setNewDate] = useState('');
   const [newTime, setNewTime] = useState('');
+  const navigate = useNavigate(); // ✅ Initialize this
 
   useEffect(() => {
     fetchAppointments();
@@ -83,8 +86,15 @@ const AppointmentListPage = () => {
     }
   };
 
+  const handleBack = () => {
+    navigate('/AdminHome'); // ✅ Ensure this route is correct
+  };
+
   return (
     <div className="appointment-list">
+      <button className="back-button" onClick={handleBack}>
+      <IoMdArrowRoundBack /> Back
+      </button>
       <h2>Appointments</h2>
 
       {/* Delete Section */}
@@ -110,13 +120,11 @@ const AppointmentListPage = () => {
         />
         <input
           type="date"
-          placeholder="New Date"
           value={newDate}
           onChange={(e) => setNewDate(e.target.value)}
         />
         <input
           type="time"
-          placeholder="New Time"
           value={newTime}
           onChange={(e) => setNewTime(e.target.value)}
         />
