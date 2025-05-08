@@ -11,14 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-body{
- /* background-image: url('component/image/water.jpg');  */
- background-color: rgb(24, 24, 22);
+
+body {
+  background-image: url('component/image/adminlogin.jpg');
+  background-color: rgba(63, 45, 231, 0.629);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh; /* ensures full height */
-  padding: 20px;
-  height: 100vh;
+  height: 200vh;
   width: 100%;
+
+
 }

@@ -1,7 +1,7 @@
 /* AppointmentListPage.css */
 
 .appointment-list {
-  max-width: 1200px;
+  max-width: 1450px;
   margin: 0 auto;
   padding: 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -19,7 +19,7 @@ h2 {
 .delete-section,
 .update-section {
   display: flex;
-  flex-wrap: wrap;
+
   gap: 10px;
   margin-bottom: 20px;
   justify-content: center;
@@ -99,4 +99,35 @@ h2 {
 
 .appointment-table button:last-child:hover {
   background-color: #c82333;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.search-bar input {
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  width: 250px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.search-icon {
+  color: #555;
+  font-size: 1rem;
+}
+
+.rejection-box {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.rejection-box input {
+  padding: 5px;
+  margin-bottom: 5px;
+  width: 150px;
 }

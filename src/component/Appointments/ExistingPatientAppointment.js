@@ -1,88 +1,104 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import './ExistingPatientAppointment.css';
 
-const ExistingPatientAppointment = () => {
+const PatientRecordByName = () => {
   const [patientName, setPatientName] = useState('');
-  const [patientDob, setPatientDob] = useState('');
-  const [records, setRecords] = useState(null);
-  const [message, setMessage] = useState('');
-  const [appointmentDate, setAppointmentDate] = useState('');
-  const [appointmentTime, setAppointmentTime] = useState('');
-  const navigate = useNavigate();
+  const [appointments, setAppointments] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
 
-  const handleAppointmentSubmit = async () => {
+  const fetchAppointments = async () => {
+    setLoading(true);
+    setNotFound(false);
     try {
-      const response = await axios.post('http://localhost:8080/appointments/create', {
-        patientName,
-        patientDob,
-        appointmentDate,
-        appointmentTime,
+      const response = await axios.get(`http://localhost:8080/appointments/by-patient`, {
+        params: { patientName },
       });
-
-      if (Array.isArray(response.data)) {
-        setRecords(response.data);
-        setMessage('Existing appointments found.');
+      if (response.data.length > 0) {
+        setAppointments(response.data);
       } else {
-        setRecords([response.data]);
-        setMessage('Appointment booked successfully!');
+        setNotFound(true);
+        setAppointments([]);
       }
     } catch (error) {
-      setMessage('Failed to book appointment. Please try again.');
+      console.error('Error fetching appointments:', error);
+      setNotFound(true);
     }
-  };
-
-  const handleNewDisease = () => {
-    navigate('/PatientAppointmentForm');
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/patientlogin');
+    setLoading(false);
   };
 
   return (
-    <div className="existing-appointment-container">
-      <div className="logout-bar">
-        <button className="logout-button" onClick={handleLogout}>Logout</button>
-      </div>
-
-      <h2>Existing Patient Appointment</h2>
-
+    <div style={styles.container}>
+      <h2>Search Patient Appointments</h2>
       <input
         type="text"
-        placeholder="Enter Patient Name"
+        placeholder="Enter patient name"
         value={patientName}
         onChange={(e) => setPatientName(e.target.value)}
+        style={styles.input}
       />
-      <input
-        type="date"
-        placeholder="Enter Date of Birth"
-        value={patientDob}
-        onChange={(e) => setPatientDob(e.target.value)}
-      />
-      <button onClick={handleAppointmentSubmit}>Book Appointment</button>
+      <button onClick={fetchAppointments} style={styles.button}>Search</button>
 
-      {records && (
-        <div className="record-display">
-          <h3>Appointment Records</h3>
-          {records.map((record, index) => (
-            <div key={index}>
-              <p><strong>Date:</strong> {record.appointmentDate}</p>
-              <p><strong>Time:</strong> {record.appointmentTime}</p>
-              <p><strong>Status:</strong> {record.status}</p>
-              <hr />
-            </div>
-          ))}
-        </div>
+      {loading && <p>Loading...</p>}
+
+      {notFound && <p>No records found for "{patientName}"</p>}
+
+      {appointments.length > 0 && (
+        <table style={styles.table}>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Patient Name</th>
+              <th>DOB</th>
+              <th>Doctor</th>
+              <th>Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {appointments.map((appt) => (
+              <tr key={appt.id}>
+                <td>{appt.id}</td>
+                <td>{appt.patientName}</td>
+                <td>{appt.patientDob}</td>
+                <td>{appt.doctorName}</td>
+                <td>{appt.appointmentDate}</td>
+                <td>{appt.status}</td>
+                <td></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       )}
-
-      <p>Is this a new disease? <button onClick={handleNewDisease}>Go to New Patient Form</button></p>
-
-      {message && <p className="status-message">{message}</p>}
     </div>
   );
 };
 
-export default ExistingPatientAppointment;
+const styles = {
+  container: {
+    padding: '20px',
+    fontFamily: 'Arial, sans-serif',
+  },
+  input: {
+    padding: '8px',
+    marginRight: '10px',
+    width: '250px',
+  },
+  button: {
+    padding: '8px 16px',
+    backgroundColor: '#007bff',
+    color: '#fff',
+    border: 'none',
+    cursor: 'pointer',
+  },
+  table: {
+    marginTop: '20px',
+    width: '100%',
+    borderCollapse: 'collapse',
+  },
+  th: {
+    backgroundColor: '#f2f2f2',
+  },
+};
+
+export default PatientRecordByName;

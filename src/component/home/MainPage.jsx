@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './MainPage.css'; // Optional for external styles
+import './MainPage.css';
 
 const MainPage = () => {
   const navigate = useNavigate();
-  const [showServices, setShowServices] = useState(true); // <-- Fix: define state
+  const [showServices, setShowServices] = useState(true);
 
   const toggleServices = () => {
-    setShowServices(!showServices); // <-- Fix: toggle function
+    setShowServices(!showServices);
   };
 
   return (
     <div>
-      {/* Navbar/Header */}
-      <header className="navbar">
+
+      <header className="navbar-nav">
         <div className="navbar-title"><h1>Hospital Management</h1></div>
         <nav className="navbar-links">
           <button onClick={() => navigate('/login')}>Admin Login</button>
@@ -21,17 +21,19 @@ const MainPage = () => {
         </nav>
       </header>
 
-      {/* Main Content */}
+
       <div className="main-content">
         <div className="welcome-message">
           <h2>Welcome to Hospital Management</h2>
           <p>Your health and well-being are our priority.</p>
           <button className='mainPageButton' onClick={toggleServices}>
+
             {showServices ? "Hide Services" : "Show Services"}
+
           </button>
         </div>
-            <br />  <br />  <br />
-        {/* Services Section */}
+        <br />  <br />  <br />
+
         {showServices && (
           <div className="services">
             <div className="service-box">
@@ -50,11 +52,11 @@ const MainPage = () => {
         )}
       </div>
 
-      {/* Footer */}
+
       <footer>
         <p>© 2025 XYZ Hospital. All rights reserved.</p>
       </footer>
-    </div> // <-- Fix: close main div
+    </div>
   );
 };
 

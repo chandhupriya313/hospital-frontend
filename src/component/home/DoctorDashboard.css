@@ -1,5 +1,11 @@
+body
+{
+margin-top: 0%;
+}
+
 .doctor-dashboard {
     max-width: 800px;
+    
     margin: 30px auto;
     padding: 20px;
     background: #f4faff;
@@ -130,7 +136,9 @@
   .doctor-table,
   .doctor-table tbody,
   .doctor-table tr,
-  .doctor-table td {
+  .doctor-table td
+   {
+
     display: block;
     width: 100%;
   }

@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './DoctorDashboard.css';
 
 const DoctorDashboard = () => {
-  const [doctors, setDoctors] = useState([]);
   const [newDoctor, setNewDoctor] = useState({
     name: '',
     profession: '',
@@ -16,19 +15,17 @@ const DoctorDashboard = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  // Fetch all doctors from backend on component load
-  useEffect(() => {
-    fetchDoctors();
-  }, []);
-
-  const fetchDoctors = async () => {
+  const fetchDoctors = useCallback(async () => {
     try {
-      const res = await axios.get('http://localhost:8080/doctor/all'); // Adjust if your endpoint differs
-      setDoctors(res.data);
+      await axios.get('http://localhost:8080/doctor/all');
     } catch (err) {
       console.error('Error fetching doctors:', err);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchDoctors();
+  }, [fetchDoctors]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -41,9 +38,8 @@ const DoctorDashboard = () => {
   const handleAddDoctor = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/doctor/add', newDoctor); // Adjust endpoint as needed
+      await axios.post('http://localhost:8080/doctor/add', newDoctor);
       setMessage('Doctor added successfully');
-      navigate('/DoctorListPage');
       setNewDoctor({
         name: '',
         profession: '',
@@ -51,7 +47,7 @@ const DoctorDashboard = () => {
         workingDays: '',
         workingHours: ''
       });
-      fetchDoctors(); // Refresh list after adding
+      fetchDoctors();
     } catch (err) {
       console.error('Error adding doctor:', err);
       setMessage('Failed to add doctor');
@@ -64,7 +60,7 @@ const DoctorDashboard = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/mainpage');
   };
 
   return (
@@ -79,6 +75,8 @@ const DoctorDashboard = () => {
 
       <form className="add-doctor-form" onSubmit={handleAddDoctor}>
         <h3>Add Doctor</h3>
+
+        <label htmlFor="text"><b>Doctor Name:</b></label>
         <input
           type="text"
           name="name"
@@ -87,6 +85,8 @@ const DoctorDashboard = () => {
           onChange={handleChange}
           required
         />
+
+        <label htmlFor="text"><b>Profession:</b></label>
         <input
           type="text"
           name="profession"
@@ -95,6 +95,8 @@ const DoctorDashboard = () => {
           onChange={handleChange}
           required
         />
+
+        <label htmlFor="text"><b>Specialization:</b></label>
         <input
           type="text"
           name="specialization"
@@ -103,6 +105,8 @@ const DoctorDashboard = () => {
           onChange={handleChange}
           required
         />
+
+        <label htmlFor="text"><b>Working Days:</b></label>
         <input
           type="text"
           name="workingDays"
@@ -111,6 +115,8 @@ const DoctorDashboard = () => {
           onChange={handleChange}
           required
         />
+
+        <label htmlFor="text"><b>Working Hours:</b></label>
         <input
           type="text"
           name="workingHours"
@@ -119,11 +125,12 @@ const DoctorDashboard = () => {
           onChange={handleChange}
           required
         />
+
         <button type="submit">Add Doctor</button>
       </form>
 
       {message && <p className="status-message">{message}</p>}
-     </div>
+    </div>
   );
 };
 

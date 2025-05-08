@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './PatientRegistration.css'; // Import your styles
+import './PatientRegistration.css';
 
 const PatientRegistration = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +19,7 @@ const PatientRegistration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/hosp/register', formData);
+      await axios.post('http://localhost:8080/hosp/register', formData);
       setMessage('Registration successful!');
       setFormData({ username: '', dob: '' });
     } catch (error) {
@@ -31,9 +31,10 @@ const PatientRegistration = () => {
     <div className="registration-container">
       <h2>Patient Registration</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label htmlFor="username">
           Username:
           <input
+            id="username"
             type="text"
             name="username"
             value={formData.username}
@@ -42,9 +43,10 @@ const PatientRegistration = () => {
           />
         </label>
 
-        <label>
+        <label htmlFor="dob">
           Date of Birth:
           <input
+            id="dob"
             type="date"
             name="dob"
             value={formData.dob}
@@ -55,13 +57,18 @@ const PatientRegistration = () => {
 
         <button type="submit">Register</button>
       </form>
+
       {message && <p className="message">{message}</p>}
-    
-    <div className="login">
-    <p>already have an account?<a href="/login"><strong>Login </strong></a></p>
-    
-  </div>
-   </div>
+
+      <div className="login">
+        <p>
+          Already have an account?{' '}
+          <a href="/patientlogin">
+            <strong>Login</strong>
+          </a>
+        </p>
+      </div>
+    </div>
   );
 };
 

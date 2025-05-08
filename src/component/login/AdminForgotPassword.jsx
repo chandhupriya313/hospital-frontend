@@ -29,11 +29,11 @@ const AdminForgotPassword = () => {
       <h2>Admin Forgot Password</h2>
       {message && <p className="response-message">{message}</p>}
       <form onSubmit={handleReset} className="forgot-password-form">
-        <label>Email:</label>
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+        <label htmlFor='name'>Email:</label>
+        <input id="name" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
 
-        <label>New Password:</label>
-        <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
+        <label htmlFor='pass'>New Password:</label>
+        <input id="pass" type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
 
         <button type="submit">Reset Password</button>
       </form>

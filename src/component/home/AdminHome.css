@@ -1,76 +1,78 @@
 /* src/components/AdminHome.css */
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  html, body, .admin-home {
-    height: 100%;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  .admin-home {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  
-  .admin-header {
-    background-color: #007bff;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .admin-nav {
-    margin-top: 15px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .admin-nav button {
-    padding: 10px 20px;
-    font-size: 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ffffff;
-    color: #007bff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .admin-nav button:hover {
-    background-color: #e6e6e6;
-  }
-  
-  .logout-btn {
-    background-color: #dc3545 !important;
-    color: white !important;
-  }
-  
-  .admin-main {
-    flex: 1;
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #f9f9f9;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    background-image: url('C:\Users\chand\OneDrive\Desktop\reactbasics\hospital-frontend\src\component\image\admindash.jpg'); /* Note the leading slash */
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    height: 80vh;
+html,
+body,
+.admin-home {
+  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  }
-  
-  .admin-footer {
-    background-color: #333;
-    color: #f1f1f1;
-    text-align: center;
-    padding: 15px;
-  }
-  
+.admin-home {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.admin-header {
+  background-color: #007bff;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.admin-nav {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-nav button {
+  padding: 10px 20px;
+  font-size: 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.admin-nav button:hover {
+  background-color: #e6e6e6;
+}
+
+.logout-btn {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+
+.admin-main {
+  flex: 1;
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+
+  background-image: url('C:\Users\chand\OneDrive\Desktop\reactbasics\hospital-frontend\src\component\image\admindash.jpg');
+  /* Note the leading slash */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+
+}
+
+.admin-footer {
+  background-color: #333;
+  color: #f1f1f1;
+  text-align: center;
+  padding: 15px;
+}
